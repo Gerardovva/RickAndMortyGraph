@@ -22,8 +22,8 @@ export class LocalStorageservice {
         const found = !!currentFav.find((fav: Characters) => {
             return fav.id === id;
         });
-        
-        
+
+
 
         found ? this.removeFromFavorite(id) : this.addToFavorite(character)
     }
@@ -33,10 +33,10 @@ export class LocalStorageservice {
             const currentFav = this.getFavoriteCharacters();
             localStorage.setItem(MY_FAVORITE, JSON.stringify([...currentFav, chareacter]));
             this.charactersFavSucj.next([...currentFav, chareacter]);
-            this.toastServi.success(`${chareacter.name} added to favorite`,'Rick and Morty');
+            this.toastServi.success(`${chareacter.name} added to favorite`, 'Rick and Morty');
         } catch (error) {
             console.log("Error saving localstorage", error);
-            this.toastServi.error(`Error saving localstorage ${error}`,'Rick and Morty');
+            this.toastServi.error(`Error saving localstorage ${error}`, 'Rick and Morty');
         }
 
     }
@@ -47,10 +47,10 @@ export class LocalStorageservice {
             const characters = currentFav.filter((item: { id: number; }) => item.id != id)
             localStorage.setItem(MY_FAVORITE, JSON.stringify([...characters]));
             this.charactersFavSucj.next([...characters]);
-            this.toastServi.warning(`Remove from Favorite`,'Rick and Morty')
+            this.toastServi.warning(`Remove from Favorite`, 'Rick and Morty')
         } catch (error) {
             console.log("Error removing localstorage", error);
-            this.toastServi.error(`Error removing localstorage ${error}`,'Rick and Morty');
+            this.toastServi.error(`Error removing localstorage ${error}`, 'Rick and Morty');
         }
     }
 
